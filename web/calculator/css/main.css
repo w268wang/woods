@@ -1,0 +1,110 @@
+html, body {
+	margin: 0;
+    padding: 0;
+    background: #faf8ef;
+    color: #776e65;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+}
+
+body {
+	margin: 5px 5px;
+}
+
+.heading:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+h1.title {
+	font-size: 64px;
+	font-weight: bold;
+	margin: 0;
+	display: block;
+	float: left;
+}
+
+.container {
+	width: 320px;
+	margin: 0 auto;
+}
+
+.heading {
+	width: 320px;
+	margin: 0 auto;
+}
+
+.calculator-container {
+	width: 320px;
+}
+
+.screen-container, .screen{
+	width: 320px;
+	margin: 0 auto;
+	text-align: right;
+    font-weight: bold;
+	background: #FFFFFF;
+	margin: 0 auto;
+}
+
+.screen {
+	height: 40px;
+	opacity: 0.78;
+}.screen:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.botton-container {
+	position: absolute;
+	z-index: 1;
+}
+
+.grid-row {
+	margin-bottom: 0px;
+}.grid-row:after {
+    content: "";
+    display: block;
+    clear: both; 
+}
+
+.botton-cell1 {
+	width: 80px;
+	height: 80px;
+	float: left;
+	border-style: outset;
+    border-width: 1px;
+	text-align: center;
+    font-weight: bold;
+	background: #E0E0E0;
+}.botton-cell1:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.botton-cell2 {
+	width: 80px;
+	height: 80px;
+	float: left;
+	border-style: outset;
+    border-width: 1px;
+	text-align: center;
+    font-weight: bold;
+	background: #ffff99; 
+}.botton-cell2:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
