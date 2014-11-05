@@ -24,6 +24,9 @@
     <fileset dir="${catalina.home}/lib">
       <include name="*.jar"/>
     </fileset>
+    <fileset dir="${web.home}/WEB-INF/lib">
+      <include name="*.jar"/>
+    </fileset>
 
   </path>
 
@@ -75,6 +78,16 @@
 
 
 <!-- ==================== All Target ====================================== -->
+
+
+  <target name="package" depends="compile" description="Package a war file">
+      <war destfile="webapps/ROOT.war" webxml="${web.home}/WEB-INF/web.xml">
+          <fileset dir="build">
+              <include name="**/*.*"/>
+          </fileset>
+      </war>
+  </target>
+
 
 <!--
 
