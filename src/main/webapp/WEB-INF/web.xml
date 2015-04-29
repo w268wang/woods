@@ -1,0 +1,89 @@
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <display-name>wood</display-name>
+    <description>
+        This is version 0.1 of an application to perform
+        a wild and wonderful task, based on servlets and
+        JSP pages.  It was written by Weijie Wang
+        (w268wang@gmail.com), who should be contacted for
+        more information.
+    </description>
+
+    <context-param>
+        <param-name>webmaster</param-name>
+        <param-value>w268wang@gmail.com</param-value>
+        <description>
+            The EMAIL address of the administrator to whom questions
+            and comments about this application should be addressed.
+        </description>
+    </context-param>
+
+    <servlet>
+        <servlet-name>controller</servlet-name>
+        <description>
+            This servlet plays the "controller" role in the MVC architecture
+            used in this application.  It is generally mapped to the ".do"
+            filename extension with a servlet-mapping element, and all form
+            submits in the app will be submitted to a request URI like
+            "saveCustomer.do", which will therefore be mapped to this servlet.
+
+            The initialization parameter names for this servlet are the
+            "servlet path" that will be received by this servlet (after the
+            filename extension is removed).  The corresponding value is the
+            name of the action class that will be used to process this request.
+        </description>
+        <servlet-class>com.mycompany.mypackage.ControllerServlet</servlet-class>
+        <init-param>
+            <param-name>listOrders</param-name>
+            <param-value>com.mycompany.myactions.ListOrdersAction</param-value>
+        </init-param>
+        <init-param>
+            <param-name>saveCustomer</param-name>
+            <param-value>com.mycompany.myactions.SaveCustomerAction</param-value>
+        </init-param>
+        <!-- Load this servlet at server startup time -->
+        <load-on-startup>5</load-on-startup>
+        </servlet>
+
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>mypackage.Hello</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WoodServlet</servlet-name>
+        <servlet-class>wood.SessionCounter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WoodServlet</servlet-name>
+        <url-pattern>/fc</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+         <!-- Register resources and providers under com.vogella.jersey.first package. -->
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>rest.woodray</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

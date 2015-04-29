@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Calculator</title>
+
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="heading">
+                <h1 class="title">Calculator</h1>
+            </div>
+            <div class="calculator-container">
+                <div class="screen-container">
+                    <div class="screen" id="line1"></div>
+                    <div class="screen" id="line2">0</div>
+                </div>
+                <div class="botton-container">
+                    <div class="grid-row">
+                        <button class="botton-cell1" onclick="buttonClear()">C</button>
+                        <button class="botton-cell1" onclick="buttonPo()">+/-</button>
+                        <button class="botton-cell1" onclick="buttonOp('%')">%</button>
+                        <button class="botton-cell2" onclick="buttonOp('/')">/</button>
+                    </div>
+                    <div class="grid-row">
+                        <button class="botton-cell1" onclick="buttonNum(7)">7</button>
+                        <button class="botton-cell1" onclick="buttonNum(8)">8</button>
+                        <button class="botton-cell1" onclick="buttonNum(9)">9</button>
+                        <button class="botton-cell2" onclick="buttonOp('*')">*</button>
+                    </div>
+                    <div class="grid-row">
+                        <button class="botton-cell1" onclick="buttonNum(4)">4</button>
+                        <button class="botton-cell1" onclick="buttonNum(5)">5</button>
+                        <button class="botton-cell1" onclick="buttonNum(6)">6</button>
+                        <button class="botton-cell2" onclick="buttonOp('-')">-</button>
+                    </div>
+                    <div class="grid-row">
+                        <button class="botton-cell1" onclick="buttonNum(1)">1</button>
+                        <button class="botton-cell1" onclick="buttonNum(2)">2</button>
+                        <button class="botton-cell1" onclick="buttonNum(3)">3</button>
+                        <button class="botton-cell2" onclick="buttonOp('+')">+</button>
+                    </div>
+                    <div class="grid-row">
+                        <button class="botton-cell1" onclick="buttonZero(1)">0</button>
+                        <button class="botton-cell1" onclick="buttonZero(2)">00</button>
+                        <button class="botton-cell1" onclick="buttonDot()">.</button>
+                        <button class="botton-cell2" onclick="eq()">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>

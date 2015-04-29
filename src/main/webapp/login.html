@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sign in</title>
+        <link type="text/css" rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="js/javarest.js"></script>
+        <script src="js/util.js"></script>
+        <script type='text/javascript'>
+            if (javaRest.is_logged_in()) {
+                window.location.replace("welcome.html");
+            }
+        </script>
+        <div id="container">
+            <input id="email" type="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
+            <div id="state_message"></div>
+            <button class="small_button" type="submit" id="login_button">Log in</button>
+            <p>Don't have an account? <a href="signup.html" class="right_link">Sign Up</a></p><br>
+            <p>Forget your password? <a id="forgot" href="forgot_password.html">Forgot Password</a></p><br>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var email = $('#email').val();
+                var password = $('#password').val();
+                document.getElementById("login_button").disabled = false;
+                $('input').live('keydown', function (event) {
+                    if (event.keyCode === 13)
+                        $('#login_button').click()
+                })
+
+                $('#login_button').on('click', function () {
+                    document.getElementById("login_button").disabled = true;
+                    document.getElementById("state_message")
+                        .innerHTML = "Please wait...";
+                    javaRest.login(email, password);
+                })
+            })
+        </script>
+    </body>
+</html>

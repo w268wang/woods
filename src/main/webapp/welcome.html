@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <link href="css/index.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="js/javarest.js"></script>
+        <script src="js/util.js"></script>
+        <script type='text/javascript'>
+            // if (!javaRest.is_logged_in()) {
+            //     window.location.replace("login.html");
+            // }
+
+            function textAreaAdjust(textbox) {
+                textbox.style.height = "1px";
+                textbox.style.height = (25 + textbox.scrollHeight) + "px";
+            }
+        </script>
+        <div id="container">
+            Welcome <p id="username"></p><br>
+            <input id="receiveremail" type="email" placeholder="Receiver username">
+            <button class="small_button" id="call_button">Call</button><br>
+            <textarea id="content" onkeyup="textAreaAdjust(this)" placeholder="message" style="overflow:hidden"></textarea></div><br>
+            <button class="small_button" id="send_button">Send</button>
+            <button class="small_button" id="logout_button">Log out</button>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+            	console.log(document.cookie);
+                document.getElementById("username").innerHTML = getCookie("useremail");
+
+                var receiveremail = $('#receiveremail').val();
+                var content = $('#content').val();
+
+                $('#call_button').on('click', function () {
+                    // javaRest.getmessage(getCookie("useremail"), getCookie("hash"));
+                    javaRest.getmessage("w268wang@gmail.com", "0j3edg98cf6fb513bgddhhccd7gag0");
+                })
+
+                $('#call_button').on('click', function () {
+                    javaRest.insertmessage("w268wang@gmail.com", receiveremail, content, "0j3edg98cf6fb513bgddhhccd7gag0");
+                })
+
+                $('#logout_button').on('click', function () {
+                    deleteCookie("useremail");
+                    deleteCookie("activate_status");
+                    deleteCookie("hash");
+                    window.location.replace("login.html");
+                })
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">  
+        <title>Sign up</title>
+        <link type="text/css" rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="js/javarest.js"></script>
+        <script src="js/util.js"></script>
+        <script type='text/javascript'>
+            if (javaRest.is_logged_in()) {
+                window.location.replace("welcome.html");
+            }
+        </script>
+        <div id="container">
+            <div>
+                <div>
+                    <input id="email" type="email" placeholder="Email">
+                    Please type in your email address.
+                </div>
+                <div class="error_message" id="email_error_message"></div>
+            </div>
+            <div>
+                <div>
+                    <input id="password" type="password" placeholder="Password">
+                    Please type in your password (6 - 12).
+                </div>
+                <div id="state_message"></div>
+            </div>
+            <div class="error_message" id="password_error_message"></div>
+            <button class="small_button" type="submit" id="submit_button">Sign up</button>
+            <p>Already have an account? <a href="login.html" class="right_link">Sign In</a></p><br>
+            <p>Forget your password? <a id="forgot" href="forgot_password.html">Forgot Password</a></p><br>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                document.getElementById("submit_button").disabled = false;
+                $('input').live('keydown', function (event) {
+                    if (event.keyCode === 13)
+                    $('#submit_button').click()
+                })
+                $('#submit_button').on('click', function () {
+                    var valid = true;
+                    var email_regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    if (!email_regex.test(email)) {
+                        document.getElementById("email_error_message").innerHTML = "Please type in valid email address";
+                        valid = false;
+                    }
+                    if (password.length < 6 || password.length > 12) {
+                        document.getElementById("password_error_message").innerHTML = "Please type in valid password";
+                        valid = false;
+                    }
+                    if (valid) {
+                        document.getElementById("submit_button").disabled = true;
+                        document.getElementById("state_message")
+                            .innerHTML = "Please wait...";
+                        javaRest.signup(email, password);
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
